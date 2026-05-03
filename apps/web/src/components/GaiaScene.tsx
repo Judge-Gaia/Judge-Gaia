@@ -15,7 +15,8 @@ export function GaiaScene({ className = "gaiaScene" }: GaiaSceneProps) {
       return;
     }
 
-    // Three.js 장면/카메라/렌더러는 보고서 캡처에 들어갈 3D 지구 초기 뷰를 구성한다.
+    // React는 DOM을 직접 그리지만, Three.js는 별도의 렌더 루프를 가진다.
+    // 그래서 이 컴포넌트에서는 DOM 컨테이너를 확보한 뒤, 그 안에 3D 캔버스를 직접 붙인다.
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
     camera.position.set(0, 0.25, 4.2);
@@ -112,7 +113,8 @@ export function GaiaScene({ className = "gaiaScene" }: GaiaSceneProps) {
       const deltaX = event.clientX - pointerState.lastX;
       const deltaY = event.clientY - pointerState.lastY;
 
-      // 마우스 드래그 입력은 지구본 회전값에 직접 반영한다.
+      // 드래그 중에는 화면 상태를 React state로 바꾸지 않고, 3D 오브젝트만 즉시 회전시킨다.
+      // 이렇게 하면 60fps에 가까운 부드러운 인터랙션을 유지할 수 있다.
       globe.rotation.y += deltaX * 0.006;
       globe.rotation.x += deltaY * 0.004;
       pointerState.velocityX = deltaX * 0.0008;
@@ -128,7 +130,8 @@ export function GaiaScene({ className = "gaiaScene" }: GaiaSceneProps) {
 
     const onWheel = (event: WheelEvent) => {
       event.preventDefault();
-      // 휠/트랙패드 입력은 카메라 거리를 제한 범위 안에서 조절해 확대/축소를 제공한다.
+      // 휠/트랙패드 입력으로 카메라 거리를 조절해 줌 인터랙션을 만든다.
+      // clamp를 써서 카메라가 너무 멀거나 너무 가까워지지 않게 제한한다.
       camera.position.z = THREE.MathUtils.clamp(camera.position.z + event.deltaY * 0.002, 2.6, 5.2);
     };
 

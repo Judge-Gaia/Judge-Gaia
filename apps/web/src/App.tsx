@@ -70,6 +70,8 @@ export function App() {
     setSelectedMode
   } = useAppStore();
 
+  // 앱 시작 시 실시간 연결과 API 상태를 먼저 확인해,
+  // 화면 상단의 상태 메트릭이 실제 서버 상태를 반영하도록 만든다.
   useRealtime();
 
   useEffect(() => {
@@ -87,6 +89,7 @@ export function App() {
   }, [setApiStatus]);
 
   useEffect(() => {
+    // 전역 키보드 이벤트는 화면 전환 같은 가벼운 내비게이션에 자주 사용된다.
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Enter" && screen === "landing") {
         setScreen("identity");
@@ -111,6 +114,7 @@ export function App() {
 
   const startSession = (event: FormEvent) => {
     event.preventDefault();
+    // 폼 제출 시 nickname과 mode를 소켓으로 보내 세션 생성 흐름을 시작한다.
     requestPlayerSession({ nickname, mode: selectedMode });
   };
 
@@ -122,6 +126,7 @@ export function App() {
   return (
     <main className="gaiaApp">
       <div className="spaceField" aria-hidden="true" />
+      {/* 배경 3D 지구는 화면 단계와 독립적으로 계속 렌더링된다. */}
       <GaiaScene
         className={
           screen === "landing" ? "heroGlobe" : screen === "mission" ? "missionGlobe" : "identityGlobe"
@@ -249,6 +254,7 @@ function IdentityScreen({
       </div>
 
       <div className="identityGrid">
+        {/* 왼쪽은 입력 폼, 오른쪽은 모드/안내 패널로 나눠 정보 밀도를 조절한다. */}
         <form className="glassPanel identityPanel" onSubmit={onSubmit}>
           <span className="panelKicker">01 · Identity</span>
           <h2>
@@ -351,6 +357,7 @@ function MissionScreen({
   nickname: string;
   sessionId: string;
 }) {
+  // 미션 화면의 리더보드는 서버 데이터가 아니라 현재 UI 시안을 보여주는 정적 예시다.
   const board = [
     { rank: "01", name: "Verdigris", score: "28,401" },
     { rank: "02", name: "Tideborn_07", score: "21,990" },

@@ -17,6 +17,8 @@ type AppState = {
   setSession: (session: PlayerSession) => void;
 };
 
+// Zustand는 React 컴포넌트 바깥에서도 접근 가능한 전역 상태를 만들 수 있다.
+// 화면 단계, 실시간 연결 상태, 세션 정보처럼 여러 컴포넌트가 공유하는 값을 여기에 둔다.
 export const useAppStore = create<AppState>((set) => ({
   apiStatus: "checking",
   realtimeStatus: "connecting",
