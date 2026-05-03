@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm --filter @judge-gaia/shared build && pnpm --filter @judge-gaia/web build",
+  "outputDirectory": "apps/web/dist",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "vite"
+}

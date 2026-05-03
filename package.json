@@ -1,0 +1,23 @@
+{
+  "name": "judge-gaia",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "pnpm --filter @judge-gaia/shared build && pnpm --parallel --filter @judge-gaia/web --filter @judge-gaia/server dev",
+    "dev:web": "pnpm --filter @judge-gaia/web dev",
+    "dev:server": "pnpm --filter @judge-gaia/server dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm --filter @judge-gaia/shared build && pnpm -r typecheck",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.49.0"
+  }
+}

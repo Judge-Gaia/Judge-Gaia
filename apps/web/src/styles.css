@@ -1,0 +1,1286 @@
+:root {
+  color: rgba(255, 255, 255, 0.92);
+  background: #050608;
+  font-family:
+    "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #050608;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.gaiaApp {
+  position: relative;
+  min-height: 100svh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(0, 157, 154, 0.24), transparent 32%),
+    radial-gradient(circle at 20% 30%, rgba(15, 98, 254, 0.18), transparent 28%),
+    linear-gradient(180deg, #010207 0%, #061018 50%, #000507 100%);
+}
+
+.spaceField {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.45) 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 70%, rgba(255, 255, 255, 0.35) 0 1px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size:
+    520px 420px,
+    640px 500px,
+    80px 80px,
+    80px 80px;
+  opacity: 0.62;
+}
+
+.spaceField::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: radial-gradient(circle at center, transparent 28%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+.heroGlobe,
+.identityGlobe,
+.missionGlobe {
+  position: absolute;
+  z-index: 0;
+  touch-action: none;
+}
+
+.globeFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 34%, rgba(120, 169, 255, 0.42), transparent 10%),
+    radial-gradient(circle at 63% 42%, rgba(86, 192, 43, 0.45), transparent 12%),
+    radial-gradient(circle at 46% 68%, rgba(0, 157, 154, 0.42), transparent 14%),
+    linear-gradient(135deg, #001f33 0%, #001141 60%, #050608 100%);
+  box-shadow:
+    inset -40px -40px 100px rgba(0, 0, 0, 0.7),
+    inset 30px 30px 80px rgba(120, 169, 255, 0.15),
+    0 0 120px rgba(15, 98, 254, 0.24);
+}
+
+.heroGlobe {
+  top: -120px;
+  left: 50%;
+  width: min(1100px, 100vw);
+  height: min(1100px, 100vw);
+  transform: translateX(-50%);
+  opacity: 0.72;
+  filter: drop-shadow(0 0 100px rgba(15, 98, 254, 0.24));
+}
+
+.identityGlobe {
+  top: 160px;
+  left: -190px;
+  width: 720px;
+  height: 720px;
+  opacity: 0.62;
+  filter: drop-shadow(0 0 90px rgba(0, 157, 154, 0.24));
+}
+
+.missionGlobe {
+  top: 50%;
+  left: 50%;
+  width: 720px;
+  height: 720px;
+  transform: translate(-50%, -50%);
+  opacity: 0.86;
+  filter: drop-shadow(0 0 100px rgba(15, 98, 254, 0.24));
+}
+
+.landingScreen,
+.identityScreen,
+.missionScreen {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  padding: 24px 48px;
+}
+
+.mainHeader,
+.identityHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.logoMark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.logoMark span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background:
+    linear-gradient(90deg, #ffffff 0 8px, transparent 8px 16px, #ffffff 16px),
+    linear-gradient(#ffffff 0 8px, transparent 8px 16px, #ffffff 16px);
+  opacity: 0.92;
+}
+
+.logoMark strong {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.logoMark small,
+.mainHeader nav span {
+  color: rgba(255, 255, 255, 0.42);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.mainHeader nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.mainHeader nav a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.systemCoordinates {
+  position: absolute;
+  top: 96px;
+  right: 48px;
+  display: grid;
+  gap: 2px;
+  color: rgba(255, 255, 255, 0.42);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.32px;
+  text-align: right;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(1100px, 100%);
+  margin: 52px auto 0;
+  text-align: center;
+}
+
+.sdgPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #a6c8ff;
+  background: rgba(15, 98, 254, 0.2);
+  font-size: 12px;
+  letter-spacing: 0.32px;
+}
+
+.sdgPill span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #78a9ff;
+}
+
+.heroCopy h1 {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(4rem, 8vw, 92px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.heroCopy h1 em,
+.identityPanel h2 em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.heroCopy h1 span {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.heroCopy p {
+  width: min(560px, 100%);
+  max-width: 100%;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+.heroActions,
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.primaryButton,
+.ghostButton,
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  border: 0;
+  border-radius: 0;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0.16px;
+}
+
+.primaryButton {
+  min-width: 192px;
+  justify-content: space-between;
+  background: #4589ff;
+  padding-right: 18px;
+}
+
+.primaryButton:hover {
+  background: #5b98ff;
+}
+
+.ghostButton,
+.backButton {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.backButton {
+  min-height: 32px;
+  padding: 7px 13px;
+  font-size: 12px;
+}
+
+.primaryButton svg,
+.ghostButton svg,
+.backButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.microCopy,
+.enterHint {
+  max-width: 100%;
+  margin-top: 28px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+}
+
+.planetStatus {
+  position: absolute;
+  right: 48px;
+  bottom: 32px;
+  left: 48px;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(5, 1fr);
+  gap: 28px;
+  min-height: 90px;
+  padding: 20px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04) 35%, rgba(255, 255, 255, 0.18));
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.statusMetric {
+  position: relative;
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr);
+  align-content: center;
+  gap: 4px 8px;
+  min-width: 0;
+}
+
+.statusMetric small {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.statusMetric strong {
+  grid-column: 1 / -1;
+  color: #ffffff;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+  line-height: 1;
+}
+
+.statusMetric em {
+  grid-column: 1 / -1;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.metricDot {
+  align-self: center;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.metricDot.green {
+  background: #3f7e44;
+}
+
+.metricDot.blue {
+  background: #0a97d9;
+}
+
+.metricDot.lime {
+  background: #56c02b;
+}
+
+.metricDot.azure {
+  background: #78a9ff;
+}
+
+.identityHeader {
+  position: relative;
+  z-index: 2;
+}
+
+.stepper {
+  position: absolute;
+  top: 110px;
+  left: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.stepper span {
+  font-size: 11px;
+  letter-spacing: 0.32px;
+}
+
+.stepper strong,
+.stepper b {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.32px;
+}
+
+.stepper strong {
+  color: #ffffff;
+}
+
+.stepper b {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.stepper i {
+  width: 80px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.identityGrid {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
+  gap: 48px;
+  min-height: 600px;
+  margin: 108px auto 0;
+  max-width: 1040px;
+}
+
+.glassPanel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.identityPanel {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.panelKicker,
+.fieldLabel,
+.suggestedLabel {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.identityPanel h2 {
+  margin: 12px 0 8px;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1.23;
+  letter-spacing: 0;
+}
+
+.identityPanel p,
+.noticePanel p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.fieldLabel {
+  margin-top: 30px;
+}
+
+.identityPanel input {
+  width: 100%;
+  height: 48px;
+  margin-top: 10px;
+  border: 0;
+  outline: 0;
+  padding: 0 16px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 16px;
+}
+
+.identityPanel input:focus {
+  box-shadow: inset 0 0 0 2px #4589ff;
+}
+
+.inputMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+}
+
+.suggestedLabel {
+  margin-top: 28px;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.suggestions button {
+  border: 0;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+}
+
+.sessionReceipt {
+  margin-top: 24px;
+  border-left: 3px solid #56c02b;
+  padding: 10px 12px;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(86, 192, 43, 0.1);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+}
+
+.sessionReceipt strong {
+  color: #ffffff;
+}
+
+.sideStack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modePanel {
+  padding: 32px;
+}
+
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.modeButton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 160px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  color: #ffffff;
+  background: rgba(22, 22, 22, 0.6);
+  text-align: left;
+}
+
+.modeButton.active {
+  box-shadow: inset 0 0 0 3px #4589ff;
+}
+
+.modeButton span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.modeButton strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modeButton em {
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: #a6c8ff;
+  background: rgba(15, 98, 254, 0.2);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.modeButton:last-child em {
+  color: #fdd13a;
+  background: rgba(241, 194, 27, 0.2);
+}
+
+.modeButton small {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+}
+
+.modeButton b {
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+}
+
+.noticePanel {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  gap: 12px;
+  padding: 24px;
+}
+
+.noticeDot {
+  width: 8px;
+  height: 8px;
+  margin-top: 4px;
+  background: #fa4d56;
+}
+
+.enterHint {
+  position: absolute;
+  right: 0;
+  bottom: 48px;
+  left: 0;
+  text-align: center;
+}
+
+.enterHint kbd {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 9px;
+  color: rgba(255, 255, 255, 0.45);
+  background: transparent;
+  font: inherit;
+}
+
+.missionScreen {
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.missionCenter {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.eventPin {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: #fa4d56;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.eventPin::before,
+.eventPin::after {
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  content: "";
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.eventPin::after {
+  inset: -1px;
+  border: 1px solid currentColor;
+  background: transparent;
+  opacity: 0.45;
+}
+
+.eventPin.warning {
+  color: #fdd13a;
+}
+
+.eventPin.stable {
+  color: #42be65;
+}
+
+.missionTopBar,
+.activeObjective,
+.liveAlerts,
+.leaderboardMini,
+.skillDock,
+.achievementFeed,
+.sessionChip {
+  position: absolute;
+  z-index: 2;
+}
+
+.missionTopBar {
+  top: 24px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  min-height: 32px;
+  justify-content: center;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.05) 65%);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  backdrop-filter: blur(14px);
+}
+
+.missionTopBar strong,
+.missionTopBar b {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+}
+
+.missionTopBar b {
+  color: #78a9ff;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #fa4d56;
+  box-shadow: 0 0 12px #fa4d56;
+}
+
+.activeObjective {
+  top: 24px;
+  left: 24px;
+  width: 320px;
+  padding: 18px 20px;
+}
+
+.missionPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.missionPanelHeader span,
+.missionKicker {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.missionPanelHeader b,
+.progressMeta,
+.sessionChip {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+}
+
+.activeObjective > strong {
+  display: block;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.activeObjective > small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+}
+
+.progressTrack,
+.energyBar i {
+  display: block;
+  height: 4px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.progressTrack {
+  margin-top: 18px;
+}
+
+.progressTrack i,
+.energyBar b {
+  display: block;
+  height: 100%;
+  background: #42be65;
+}
+
+.progressMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.liveAlerts {
+  top: 44px;
+  right: 24px;
+  display: grid;
+  gap: 8px;
+  width: 280px;
+}
+
+.alertCard,
+.achievementCard,
+.leaderboardMini,
+.skillDock {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05) 42%, rgba(255, 255, 255, 0.18));
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.alertCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  padding: 10px 12px;
+  border-left: 3px solid #fdd13a;
+}
+
+.alertCard.critical {
+  border-left-color: #fa4d56;
+}
+
+.alertCard strong,
+.achievementCard strong {
+  display: block;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.alertCard small,
+.alertCard span,
+.alertCard em,
+.achievementCard small {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.alertCard em {
+  justify-self: end;
+}
+
+.leaderboardMini {
+  bottom: 120px;
+  left: 24px;
+  width: 250px;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.leaderRow {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.56);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+}
+
+.leaderRow strong {
+  overflow: hidden;
+  color: inherit;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderRow b {
+  color: inherit;
+  font-weight: 400;
+}
+
+.leaderRow.current {
+  color: #78a9ff;
+}
+
+.skillDock {
+  right: 50%;
+  bottom: 56px;
+  width: 340px;
+  padding: 12px;
+  border-radius: 10px;
+  transform: translateX(50%);
+}
+
+.energyBar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.energyBar b {
+  background: #78a9ff;
+}
+
+.skillSlots {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.skillSlot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 72px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.skillSlot small {
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+}
+
+.skillSlot strong {
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.skillSlot.violet strong {
+  color: #a56eff;
+}
+
+.skillSlot.green strong {
+  color: #42be65;
+}
+
+.skillSlot.blue strong {
+  color: #0a97d9;
+}
+
+.skillSlot span {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+}
+
+.skillSlot em {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.62);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.skillDock p {
+  margin: 9px 0 0;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.achievementFeed {
+  right: 24px;
+  bottom: 88px;
+  display: grid;
+  gap: 8px;
+  width: 280px;
+}
+
+.achievementCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+}
+
+.achievementCard > span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: #ffffff;
+  background: #3f7e44;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.achievementCard > span.blue {
+  background: #0a97d9;
+}
+
+.achievementCard > span.lime {
+  background: #56c02b;
+}
+
+.sessionChip {
+  top: 24px;
+  right: 50%;
+  display: none;
+  gap: 8px;
+  transform: translateX(50%);
+}
+
+.sessionChip b {
+  color: #78a9ff;
+  font-weight: 400;
+}
+
+@media (max-width: 980px) {
+  .landingScreen,
+  .identityScreen {
+    padding: 20px;
+  }
+
+  .mainHeader nav,
+  .systemCoordinates {
+    display: none;
+  }
+
+  .heroCopy {
+    margin-top: 72px;
+  }
+
+  .planetStatus {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 48px;
+  }
+
+  .identityGrid {
+    grid-template-columns: 1fr;
+    margin-top: 120px;
+  }
+
+  .stepper {
+    left: 20px;
+    right: 20px;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .stepper i {
+    width: auto;
+    flex: 1;
+    min-width: 32px;
+  }
+
+  .stepper strong,
+  .stepper b {
+    font-size: 28px;
+  }
+
+  .identityGlobe {
+    left: -300px;
+  }
+
+  .missionScreen {
+    height: auto;
+    min-height: 1320px;
+    padding: 20px;
+  }
+
+  .missionGlobe {
+    top: 330px;
+    width: 620px;
+    height: 620px;
+  }
+
+  .missionTopBar {
+    top: 78px;
+    min-width: 0;
+    width: calc(100% - 40px);
+  }
+
+  .activeObjective {
+    top: 128px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .liveAlerts,
+  .leaderboardMini,
+  .achievementFeed,
+  .skillDock {
+    right: 20px;
+    left: 20px;
+    width: auto;
+    transform: none;
+  }
+
+  .liveAlerts {
+    top: 720px;
+  }
+
+  .leaderboardMini {
+    top: 1036px;
+    bottom: auto;
+  }
+
+  .skillDock {
+    top: 520px;
+    bottom: auto;
+  }
+
+  .achievementFeed {
+    top: 1218px;
+    bottom: auto;
+  }
+
+  .sessionChip {
+    display: flex;
+  }
+}
+
+@media (max-width: 620px) {
+  .logoMark small {
+    display: none;
+  }
+
+  .heroCopy h1 {
+    width: min(340px, 100%);
+    font-size: 44px;
+    line-height: 1.06;
+    overflow-wrap: anywhere;
+  }
+
+  .heroCopy h1 br {
+    display: none;
+  }
+
+  .heroCopy h1 em {
+    display: block;
+  }
+
+  .heroCopy h1 span {
+    display: none;
+  }
+
+  .heroCopy p {
+    width: min(270px, 100%);
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .microCopy {
+    width: min(310px, 100%);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .heroActions,
+  .formActions,
+  .modeGrid {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .primaryButton,
+  .ghostButton {
+    width: 100%;
+  }
+
+  .planetStatus {
+    grid-template-columns: 1fr;
+  }
+
+  .identityPanel,
+  .modePanel {
+    padding: 24px;
+  }
+
+  .identityGrid {
+    min-height: auto;
+  }
+
+  .missionScreen {
+    min-height: 1600px;
+  }
+
+  .missionGlobe {
+    top: 325px;
+    width: 520px;
+    height: 520px;
+  }
+
+  .missionTopBar {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .eventPin {
+    transform: scale(0.9);
+  }
+
+  .skillDock {
+    top: 500px;
+  }
+
+  .skillSlots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skillSlot {
+    height: 64px;
+  }
+
+  .liveAlerts {
+    top: 820px;
+  }
+
+  .leaderboardMini {
+    top: 1136px;
+  }
+
+  .achievementFeed {
+    top: 1320px;
+  }
+}
